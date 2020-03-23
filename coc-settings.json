@@ -60,7 +60,6 @@
 		"javascript",
 		"html",
 		"css",
-		"python",
 		"dart"
 	],
 	"signature.target": "float",
@@ -164,6 +163,7 @@
 	"git.enableGlobalStatus": false,
 	"git.signOffset": 2,
 	"tslint.autoFixOnSave": true,
+	"flutter.lsp.initialization.closingLabels":true,
 	"python.autoComplete.addBrackets": true,
 	"python.jediEnabled": false,
 	"python.formatting.provider": "yapf",

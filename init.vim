@@ -146,7 +146,7 @@ noremap <silent> K 5k
 " N key: go to the start of the line
 noremap <silent> N 0
 " I key: go to the end of the line
-noremap <silent> I $
+noremap <silent> I ^i
 
 " Faster in-line navigation
 noremap W 5w
@@ -313,9 +313,6 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'tiagofumo/dart-vim-flutter-layout'
 Plug 'RRethy/vim-illuminate'
 
-" Testing my own plugin
-" Plug 'theniceboy/vim-calc'
-
 " Pretty Dress
 Plug 'theniceboy/eleline.vim'
 Plug 'bling/vim-bufferline'
@@ -323,7 +320,7 @@ Plug 'ajmwagar/vim-deus'
 
 " Genreal Highlighter
 Plug 'jaxbot/semantic-highlight.vim'
-Plug 'chrisbra/Colorizer' " Show colors with :ColorHighlight
+"Plug 'chrisbra/Colorizer' " Show colors with :ColorHighlight
 
 " File navigation
 Plug 'junegunn/fzf.vim'
@@ -345,6 +342,7 @@ Plug 'mbbill/undotree'
 
 " Coc Use release branch (Recommend)
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'wellle/tmux-complete.vim'
 
 " Git
 Plug 'theniceboy/vim-gitignore', { 'for': ['gitignore', 'vim-plug'] }
@@ -397,7 +395,7 @@ Plug 'junegunn/vim-easy-align' " gaip= to align the = in paragraph,
 Plug 'tpope/vim-capslock'	" Ctrl+L (insert) to toggle capslock
 Plug 'easymotion/vim-easymotion'
 Plug 'Konfekt/FastFold'
-Plug 'junegunn/vim-peekaboo'
+"Plug 'junegunn/vim-peekaboo'
 "Plug 'wellle/context.vim'
 Plug 'svermeulen/vim-subversive'
 
@@ -406,6 +404,7 @@ Plug 'svermeulen/vim-subversive'
 
 " Formatter
 Plug 'Chiel92/vim-autoformat'
+Plug 'godlygeek/tabular'
 
 " For general writing
 Plug 'junegunn/goyo.vim'
@@ -588,8 +587,8 @@ augroup end
 
 " Applying codeAction to the selected region.
 " Example: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
+"xmap <leader>a  <Plug>(coc-codeaction-selected)
+"nmap <leader>a  <Plug>(coc-codeaction-selected)
 
 " Introduce function text object
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
@@ -830,10 +829,10 @@ let g:VM_maps["Redo"]      = '<C-r>'
 " ===
 " === Far.vim
 "" ===
-"noremap <LEADER>f :F  **/*<left><left><left><left><left>
-"let g:far#mapping = {
-			"\ "replace_undo" : ["u"],
-			"\ }
+noremap <LEADER>h :F  **/*<left><left><left><left><left>
+let g:far#mapping = {
+			\ "replace_undo" : ["u"],
+			\ }
 
 
 " ===
@@ -983,6 +982,7 @@ let g:formatter_yapf_style = 'pep8'
 let g:formatdef_allman = '"astyle --style=allman --pad-oper"'
 let g:formatters_cpp = ['allman']
 let g:formatters_c = ['allman']
+"let g:autoformat_autoindent = 0
 
 " ===
 " === OmniSharp
@@ -1202,20 +1202,44 @@ nmap s <plug>(SubversiveSubstitute)
 nmap ss <plug>(SubversiveSubstituteLine)
 
 
+
 " ===
 " === vim-illuminate
 " ===
 let g:Illuminate_delay = 750
 hi illuminatedWord cterm=undercurl gui=undercurl
 
+" ===
+" === tmux-complete
+" ===
+let g:tmuxcomplete#trigger = 'completefunc'
 
-" ===================== End of Plugin Settings =====================
+" ===
+" === vim-illuminate
+" ===
+let g:dart_style_guide = 2
+let g:dart_format_on_save = 1
+let dart_html_in_string=v:true
+
+" ===
+" === Necessary Commands to Execute
+" ===
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a: :Tabularize /:\zs<CR>
+vmap <Leader>a: :Tabularize /:\zs<CR>
+" ===
+" === vim-python-pep8-indent
+" ===
+let g:python_pep8_indent_hang_closing = 1
+"===================== End of Plugin Settings =====================
 
 
 " ===
 " === Necessary Commands to Execute
 " ===
 exec "nohlsearch"
+
 
 
 " Open the _machine_specific.vim file if it has just been created
