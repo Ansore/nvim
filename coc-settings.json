@@ -54,8 +54,8 @@
 	"diagnostic.virtualText": true,
 	"codeLens.enable": true,
 	"list.previewHighlightGroup": "Statement",
-	"list.nextKeymap": "<C-e>",
-	"list.previousKeymap": "<C-u>",
+	"list.nextKeymap": "<C-j>",
+	"list.previousKeymap": "<C-k>",
 	"coc.preferences.formatOnSaveFiletypes": [
 		"javascript",
 		"html",
@@ -165,7 +165,9 @@
 	"tslint.autoFixOnSave": true,
 	"flutter.lsp.initialization.closingLabels":true,
 	"python.autoComplete.addBrackets": true,
-	"python.jediEnabled": false,
+	"python.analysis.diagnosticEnabled": false,
+	"python.jediEnabled": true,
+	"python.linting.pylintArgs": ["--extension-pkg-whitelist=cv2", "--errors-only"],
 	"python.formatting.provider": "yapf",
 	"python.formatting.yapfArgs": [
 		"--style",

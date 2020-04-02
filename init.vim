@@ -84,6 +84,7 @@ set colorcolumn=80
 set virtualedit=block
 "set cmdheight=2
 set updatetime=300
+"set encoding=utf8
 
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
@@ -816,8 +817,8 @@ let g:VM_maps = {}
 " let g:VM_custom_motions  = {'n': 'h', 'i': 'l', 'u': 'k', 'e': 'j', 'N': '0', 'I': '$', 'h': 'e'}
 " let g:VM_maps['i']         = 'k'
 " let g:VM_maps['I']         = 'K'
-let g:VM_maps['Find Under']         = '<C-k>'
-let g:VM_maps['Find Subword Under'] = '<C-i>'
+let g:VM_maps['Find Under']         = '<C-n>'
+let g:VM_maps['Find Subword Under'] = '<C-n>'
 let g:VM_maps['Find Next']         = ''
 let g:VM_maps['Find Prev']         = ''
 let g:VM_maps['Remove Region'] = 'q'
@@ -1094,12 +1095,6 @@ nmap ga <Plug>(EasyAlign)
 
 
 " ===
-" === vim-after-object
-" ===
-" autocmd VimEnter * call after_object#enable('=', ':', '-', '#', ' ')
-
-
-" ===
 " === rainbow
 " ===
 let g:rainbow_active = 1
@@ -1115,31 +1110,6 @@ let g:xtabline_settings.enable_persistance = 0
 let g:xtabline_settings.last_open_first = 1
 noremap to :XTabCycleMode<CR>
 noremap \p :XTabInfo<CR>
-
-
-" ===
-" === vim-session
-" ===
-"let g:session_directory = $HOME."/.config/nvim/tmp/sessions"
-"let g:session_autosave = 'no'
-"let g:session_autoload = 'no'
-"let g:session_command_aliases = 1
-"set sessionoptions-=buffers
-"set sessionoptions-=options
-"noremap sl :OpenSession<CR>
-"noremap sS :SaveSession<CR>
-"noremap ss :SaveSession
-"noremap sc :SaveSession<CR>:CloseSession<CR>:q<CR>
-"noremap so :OpenSession default<CR>
-"noremap sD :DeleteSession<CR>
-""noremap sA :AppendTabSession<CR>
-
-
-" ===
-" === context.vim
-" ===
-"let g:context_add_mappings = 0
-"noremap <leader>ct :ContextToggle<CR>
 
 
 " ===
