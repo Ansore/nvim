@@ -129,8 +129,8 @@ noremap <sIlent> <LEADER>o za
 
 
 " Open up lazygit
-" noremap \g :term lazygit<CR>
-" noremap <c-g> :tabe<CR>:-tabmove<CR>:term lazygit<CR>
+noremap \g :term lazygit<CR>
+noremap <c-g> :tabe<CR>:-tabmove<CR>:term lazygit<CR>
 
 " Open up pudb
 " noremap <c-d> :tab sp<CR>:term python3 -m pudb %<CR>
@@ -336,6 +336,7 @@ Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-
 " Snippets
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'alpertuna/vim-header'
 
 " Undo Tree
 Plug 'mbbill/undotree'
@@ -457,19 +458,8 @@ call plug#end()
 set termguicolors	" enable true colors support
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set background=dark
-"let ayucolor="mirage"
-"let g:oceanic_next_terminal_bold = 1
-"let g:oceanic_next_terminal_italic = 1
-"let g:one_allow_italics = 1
 
-"color dracula
-"color one
 color deus
-"color gruvbox
-"let ayucolor="light"
-"color ayu
-"set background=light
-"color xcodedark
 
 hi NonText ctermfg=gray guifg=grey10
 "hi SpecialKey ctermfg=blue guifg=grey70
@@ -972,6 +962,7 @@ let g:go_highlight_trailing_whitespace_error = 1
 let g:go_highlight_types = 1
 let g:go_highlight_variable_assignments = 0
 let g:go_highlight_variable_declarations = 0
+let g:go_doc_keywordprg_enabled = 0
 
 
 " ===
@@ -1198,10 +1189,22 @@ nmap <Leader>a= :Tabularize /=<CR>
 vmap <Leader>a= :Tabularize /=<CR>
 nmap <Leader>a: :Tabularize /:\zs<CR>
 vmap <Leader>a: :Tabularize /:\zs<CR>
+
 " ===
 " === vim-python-pep8-indent
 " ===
 let g:python_pep8_indent_hang_closing = 1
+
+" ===
+" === vim-header
+" ===
+let g:header_auto_add_header = 0
+let g:header_field_author = 'Ansore'
+let g:header_field_author_email = 'ansore@126.com'
+map <leader>ah :AddHeader<CR>
+" first create file
+autocmd BufNewFile *.* exec ":AddHeader"
+
 "===================== End of Plugin Settings =====================
 
 
