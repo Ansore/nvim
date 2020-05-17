@@ -336,7 +336,7 @@ Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-
 " Snippets
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'alpertuna/vim-header'
+"Plug 'alpertuna/vim-header'
 
 " Undo Tree
 Plug 'mbbill/undotree'
@@ -436,7 +436,7 @@ Plug 'wincent/terminus'
 " Other useful utilities
 Plug 'lambdalisue/suda.vim' " do stuff like :sudowrite
 Plug 'makerj/vim-pdf'
-Plug 'vim-scripts/fcitx.vim'
+"Plug 'vim-scripts/fcitx.vim'
 "Plug 'xolox/vim-session'
 "Plug 'xolox/vim-misc' " vim-session dep
 
@@ -461,7 +461,7 @@ set background=dark
 
 color deus
 
-hi NonText ctermfg=gray guifg=grey10
+"hi NonText ctermfg=gray guifg=grey10
 "hi SpecialKey ctermfg=blue guifg=grey70
 
 " ===================== Start of Plugin Settings =====================
@@ -492,7 +492,7 @@ nnoremap <LEADER>g= :GitGutterNextHunk<CR>
 " ===
 " fix the most annoying bug that coc has
 "silent! au BufEnter,BufRead,BufNewFile * silent! unmap if
-let g:coc_global_extensions = ['coc-python', 'coc-vimlsp', 'coc-html', 'coc-json', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-lists', 'coc-gitignore', 'coc-vimlsp', 'coc-tailwindcss', 'coc-stylelint', 'coc-tslint', 'coc-emmet', 'coc-git', 'coc-explorer', 'coc-pyright', 'coc-sourcekit', 'coc-translator', 'coc-flutter']
+let g:coc_global_extensions = ['coc-python', 'coc-vimlsp', 'coc-html', 'coc-json', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-lists', 'coc-gitignore', 'coc-vimlsp', 'coc-tailwindcss', 'coc-stylelint', 'coc-tslint', 'coc-emmet', 'coc-git', 'coc-explorer', 'coc-pyright', 'coc-sourcekit', 'coc-translator', 'coc-flutter', 'coc-java']
 "set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 "nmap <silent> <TAB> <Plug>(coc-range-select)
 "xmap <silent> <TAB> <Plug>(coc-range-select)
@@ -1198,12 +1198,12 @@ let g:python_pep8_indent_hang_closing = 1
 " ===
 " === vim-header
 " ===
-let g:header_auto_add_header = 0
-let g:header_field_author = 'Ansore'
-let g:header_field_author_email = 'ansore@126.com'
-map <leader>ah :AddHeader<CR>
-" first create file
-autocmd BufNewFile *.* exec ":AddHeader"
+"let g:header_auto_add_header = 0
+"let g:header_field_author = 'Ansore'
+"let g:header_field_author_email = 'ansore@126.com'
+"map <leader>ah :AddHeader<CR>
+"" first create file
+"autocmd BufNewFile *.* exec ":AddHeader"
 
 "===================== End of Plugin Settings =====================
 
