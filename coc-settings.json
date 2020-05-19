@@ -82,7 +82,6 @@
 	"explorer.file.column.git.showIgnored": true,
 	"explorer.keyMappingMode": "none",
 	"explorer.keyMappings": {
-		"i": "unmap", 
 
 		"k": "nodePrev",
 		"j": "nodeNext",
