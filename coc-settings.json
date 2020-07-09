@@ -3,6 +3,7 @@
 	"coc.preferences.enableFloatHighlight": true,
 	"coc.preferences.snippetStatusText": "Ⓢ ",
 	"coc.preferences.extensionUpdateCheck": "weekly",
+	"java.home": "/home/ansore/.local/java/jdk1.8.0_251",
 	"suggest.detailMaxLength": 60,
 	"suggest.noselect": true,
 	"suggest.enablePreselect": false,
@@ -190,6 +191,7 @@
 			"command": "gopls",
 			"rootPatterns": ["go.mod"],
 			"filetypes": ["go"],
+			"disableWorkspaceFolders": true,
 			"initializationOptions": {
 				"gocodeCompletionEnabled": true,
 				"diagnosticsEnabled": true,

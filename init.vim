@@ -29,7 +29,7 @@ source ~/.config/nvim/_machine_specific.vim
 " ===
 " === System
 " ===
-set clipboard=unnamedplus
+"set clipboard=unnamedplus
 let &t_ut=''
 set autochdir
 
@@ -41,9 +41,9 @@ set number
 set relativenumber
 set cursorline
 set noexpandtab
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set autoindent
 set list
 set listchars=tab:\|\ ,trail:▫
@@ -295,8 +295,8 @@ func! CompileRunGcc()
 	elseif &filetype == 'tex'
 		silent! exec "VimtexStop"
 		silent! exec "VimtexCompile"
-	elseif &filetype == 'dart'
-		CocCommand flutter.run
+	"elseif &filetype == 'dart'
+		"CocCommand flutter.run
 	elseif &filetype == 'go'
 		set splitbelow
 		:sp
@@ -318,6 +318,7 @@ Plug 'RRethy/vim-illuminate'
 Plug 'theniceboy/eleline.vim'
 Plug 'bling/vim-bufferline'
 Plug 'ajmwagar/vim-deus'
+"Plug 'arcticicestudio/nord-vim'
 
 " Genreal Highlighter
 Plug 'jaxbot/semantic-highlight.vim'
@@ -436,7 +437,6 @@ Plug 'wincent/terminus'
 " Other useful utilities
 Plug 'lambdalisue/suda.vim' " do stuff like :sudowrite
 Plug 'makerj/vim-pdf'
-"Plug 'vim-scripts/fcitx.vim'
 "Plug 'xolox/vim-session'
 "Plug 'xolox/vim-misc' " vim-session dep
 
@@ -457,9 +457,18 @@ call plug#end()
 " ===
 set termguicolors	" enable true colors support
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-set background=dark
 
-color deus
+set t_Co=256
+set termguicolors
+
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+
+set background=dark    " Setting dark mode
+colorscheme deus
+let g:deus_termcolors=256
+"color deus
+"colorscheme nord
 
 "hi NonText ctermfg=gray guifg=grey10
 "hi SpecialKey ctermfg=blue guifg=grey70
@@ -506,8 +515,8 @@ inoremap <silent><expr> <Tab>
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+	let col = col('.') - 1
+	return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 " Use <c-space> to trigger completion.
@@ -521,10 +530,10 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
 " position. Coc only does snippet and additional edit on confirm.
 if has('patch8.1.1068')
-  " Use `complete_info` if your (Neo)Vim version supports it.
-  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+	" Use `complete_info` if your (Neo)Vim version supports it.
+	inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 else
-  imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+	imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
 
 " Close the preview window when completion is done.
@@ -539,11 +548,11 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 nnoremap <silent> M :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
+	if (index(['vim','help'], &filetype) >= 0)
+		execute 'h '.expand('<cword>')
+	else
+		call CocAction('doHover')
+	endif
 endfunction
 
 " Open up coc-commands
@@ -569,11 +578,11 @@ xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder.
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+	autocmd!
+	" Setup formatexpr specified filetype(s).
+	autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+	" Update signature help on jump placeholder.
+	autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
 " Applying codeAction to the selected region.
@@ -1203,10 +1212,37 @@ let g:python_pep8_indent_hang_closing = 1
 "let g:header_field_author_email = 'ansore@126.com'
 "map <leader>ah :AddHeader<CR>
 "" first create file
-"autocmd BufNewFile *.* exec ":AddHeader"
+"autocmd BufNewFile *.* exec :AddHeader
 
+" powerline fonts
+let g:xtabline_settings.indicators = {
+			\ 'modified': '[+]',
+			\ 'pinned': '[📌]',
+			\}
+
+let g:xtabline_settings.icons = {
+			\'pin': '📌',
+			\'star': '★',
+			\'book': '📖',
+			\'lock': '🔒',
+			\'hammer': '🔨',
+			\'tick': '✔',
+			\'cross': '✖',
+			\'warning': '⚠',
+			\'menu': '☰',
+			\'apple': '🍎',
+			\'linux': '🐧',
+			\'windows': '⌘',
+			\'git': '',
+			\'palette': '🎨',
+			\'lens': '🔍',
+			\'flag': '🏁',
+			\}
 "===================== End of Plugin Settings =====================
 
+
+"===================== Tmux start =====================
+"===================== Tmux end =====================
 
 " ===
 " === Necessary Commands to Execute
