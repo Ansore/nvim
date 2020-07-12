@@ -138,7 +138,8 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
-nmap tt :CocCommand explorer<CR>
+" nmap tt :CocCommand explorer<CR>
+nmap e :CocCommand explorer<CR>
 " coc-translator
 nmap ts <Plug>(coc-translator-p)
 " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph

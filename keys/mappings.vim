@@ -3,7 +3,7 @@
 " ===
 " Set <LEADER> as <SPACE>, ; as :
 let mapleader=" "
-noremap ; :
+" noremap ; :
 
 " Save & quit
 noremap Q :q<CR>

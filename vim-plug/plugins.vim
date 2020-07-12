@@ -16,7 +16,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 Plug 'tiagofumo/dart-vim-flutter-layout'
 Plug 'RRethy/vim-illuminate'
 
-Plug 'justinmk/vim-sneak'
+"Plug 'justinmk/vim-sneak'
+
+
 " Pretty Dress
 "Plug 'theniceboy/eleline.vim'
 Plug 'vim-airline/vim-airline'
@@ -53,7 +55,12 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Git
 Plug 'theniceboy/vim-gitignore', { 'for': ['gitignore', 'vim-plug'] }
 Plug 'fszymanski/fzf-gitignore', { 'do': ':UpdateRemotePlugins' }
-Plug 'airblade/vim-gitgutter'
+
+" Git integration
+Plug 'mhinz/vim-signify'
+" Plug 'tpope/vim-fugitive'
+" Plug 'tpope/vim-rhubarb'
+" Plug 'junegunn/gv.vim'
 
 " HTML, CSS, JavaScript, PHP, JSON, etc.
 Plug 'elzr/vim-json'
@@ -89,6 +96,10 @@ Plug 'jceb/vim-orgmode', {'for': ['vim-plug', 'org']}
 "Plug 'Raimondi/delimitMate'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mg979/vim-visual-multi'
+
+Plug 'tpope/vim-commentary' " comment
+Plug 'unblevable/quick-scope' " f key enhance
+
 Plug 'scrooloose/nerdcommenter' " in <space>cn to comment a line
 Plug 'AndrewRadev/switch.vim' " gs to switch
 Plug 'tpope/vim-surround' " type yskw' to wrap the word with '' or type cs'` to change 'word' to `word`
@@ -101,10 +112,6 @@ Plug 'Konfekt/FastFold'
 
 " Formatter
 Plug 'Chiel92/vim-autoformat'
-"Plug 'godlygeek/tabular'
-
-" For general writing
-"Plug 'junegunn/goyo.vim'
 
 " Bookmarks
 Plug 'MattesGroeger/vim-bookmarks'
