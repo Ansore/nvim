@@ -14,10 +14,9 @@ endif
 call plug#begin('~/.config/nvim/autoload/plugged')
 
 Plug 'tiagofumo/dart-vim-flutter-layout'
+
+" Vim plugin for automatically highlighting other uses of the current word under the cursor
 Plug 'RRethy/vim-illuminate'
-
-"Plug 'justinmk/vim-sneak'
-
 
 " Pretty Dress
 "Plug 'theniceboy/eleline.vim'
@@ -53,7 +52,6 @@ Plug 'mbbill/undotree'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Git
-Plug 'theniceboy/vim-gitignore', { 'for': ['gitignore', 'vim-plug'] }
 Plug 'fszymanski/fzf-gitignore', { 'do': ':UpdateRemotePlugins' }
 
 " Git integration
@@ -75,8 +73,6 @@ Plug 'jelera/vim-javascript-syntax', { 'for': ['vim-plug', 'php', 'html', 'javas
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " Python
-Plug 'tmhedberg/SimpylFold', { 'for' :['python', 'vim-plug'] }
-Plug 'Vimjas/vim-python-pep8-indent', { 'for' :['python', 'vim-plug'] }
 Plug 'tweekmonster/braceless.vim'
 
 " Flutter
@@ -93,38 +89,39 @@ Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle' }
 Plug 'jceb/vim-orgmode', {'for': ['vim-plug', 'org']}
 
 " Editor Enhancement
-"Plug 'Raimondi/delimitMate'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mg979/vim-visual-multi'
 
 Plug 'tpope/vim-commentary' " comment
 Plug 'unblevable/quick-scope' " f key enhance
 
-Plug 'scrooloose/nerdcommenter' " in <space>cn to comment a line
+"Plug 'scrooloose/nerdcommenter' " in <space>cn to comment a line
+
 Plug 'AndrewRadev/switch.vim' " gs to switch
 Plug 'tpope/vim-surround' " type yskw' to wrap the word with '' or type cs'` to change 'word' to `word`
-Plug 'gcmt/wildfire.vim' " in Visual mode, type k' to select all text in '', or type k) k] k} kp
-Plug 'junegunn/vim-after-object' " da= to delete what's after =
+Plug 'gcmt/wildfire.vim' " in Visual mode, type i' to select all text in '', or type i) i] i} ip
 Plug 'junegunn/vim-easy-align' " gaip= to align the = in paragraph,
-Plug 'tpope/vim-capslock'	" Ctrl+L (insert) to toggle capslock
+
 "Plug 'easymotion/vim-easymotion'
-Plug 'Konfekt/FastFold'
+" Plug 'junegunn/vim-after-object' " da= to delete what's after =
+
+
+" 折叠
+" Plug 'Konfekt/FastFold'
+Plug 'tmhedberg/SimpylFold'
 
 " Formatter
 Plug 'Chiel92/vim-autoformat'
 
-" Bookmarks
 Plug 'MattesGroeger/vim-bookmarks'
 
 " Find & Replace
 Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'] }
+" 查找时显示数
 Plug 'osyo-manga/vim-anzu'
 
 " Mini vim APP
 Plug 'mhinz/vim-startify'
-
-" Vim Applications
-Plug 'itchyny/calendar.vim'
 
 " Other visual enhancement
 Plug 'ryanoasis/vim-devicons'
@@ -134,7 +131,6 @@ Plug 'wincent/terminus'
 
 " Other useful utilities
 Plug 'lambdalisue/suda.vim' " do stuff like :sudowrite
-Plug 'makerj/vim-pdf'
 
 " Dependencies
 Plug 'MarcWeber/vim-addon-mw-utils'

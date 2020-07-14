@@ -35,17 +35,16 @@ source $HOME/.config/nvim/plug-config/vim-visual-multi.vim
 source $HOME/.config/nvim/plug-config/far.vim
 source $HOME/.config/nvim/plug-config/vim-table-mode.vim
 source $HOME/.config/nvim/plug-config/fzf-gitignore.vim
-source $HOME/.config/nvim/plug-config/vim-calendar.vim
 source $HOME/.config/nvim/plug-config/vim-illuminate.vim
 source $HOME/.config/nvim/plug-config/vim-commentary.vim
 source $HOME/.config/nvim/plug-config/vimspector.vim
 source $HOME/.config/nvim/plug-config/anzu.vim
-source $HOME/.config/nvim/plug-config/fastfold.vim
 source $HOME/.config/nvim/plug-config/rnvimr.vim
 source $HOME/.config/nvim/plug-config/rainbow.vim
 source $HOME/.config/nvim/plug-config/vim-go.vim
 source $HOME/.config/nvim/plug-config/vim-easy-align.vim
 source $HOME/.config/nvim/plug-config/quickscope.vim
+source $HOME/.config/nvim/plug-config/vista.vim
 
 "===================== End of Plugin Settings =====================
 
