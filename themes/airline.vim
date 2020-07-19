@@ -35,7 +35,7 @@
 let g:airline_section_a = airline#section#create(['mode'])
 "let g:airline_section_a = airline#section#create(['mode', 'branch'])
 "let g:airline_section_b = airline#section#create_left(['%f'])
-" let g:airline_section_b = airline#section#create(['branch'])
+let g:airline_section_b = airline#section#create(['branch'])
 "let g:airline_section_b = airline#section#create([''])
 " let g:airline_section_b = 'Ansore'
 "let g:airline_section_c = airline#section#create(['filetype'])
