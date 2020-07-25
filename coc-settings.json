@@ -58,7 +58,6 @@
 	"list.nextKeymap": "<C-j>",
 	"list.previousKeymap": "<C-k>",
 	"coc.preferences.formatOnSaveFiletypes": [
-		"javascript",
 		"html",
 		"css",
 		"dart"
@@ -189,7 +188,7 @@
 		},
 		"golang": {
 			"command": "gopls",
-			"rootPatterns": ["go.mod"],
+			"rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
 			"filetypes": ["go"],
 			"disableWorkspaceFolders": true,
 			"initializationOptions": {
