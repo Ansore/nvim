@@ -57,15 +57,19 @@ Plug 'mbbill/undotree'
 
 " Coc Use release branch (Recommend)
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" <leader>d create function document 
+" Plug 'kkoomen/vim-doge'
 
 " Git
 Plug 'fszymanski/fzf-gitignore', { 'do': ':UpdateRemotePlugins' }
 
 " Git integration
-Plug 'mhinz/vim-signify'
+" Plug 'mhinz/vim-signify'
 " Plug 'tpope/vim-fugitive'
 " Plug 'tpope/vim-rhubarb'
 " Plug 'junegunn/gv.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'cohama/agit.vim'
 
 " HTML, CSS, JavaScript, PHP, JSON, etc.
 Plug 'elzr/vim-json'
@@ -287,7 +291,7 @@ nnoremap > >>
 noremap <LEADER><CR> :nohlsearch<CR>
 
 " Adjacent duplicate words
-noremap <LEADER>dw /\(\<\w\+\>\)\_s*\1
+" noremap <LEADER>dw /\(\<\w\+\>\)\_s*\1
 
 " Space to Tab
 nnoremap <LEADER>tt :%s/    /\t/g
@@ -344,11 +348,16 @@ cnoremap <M-w> <S-Right>
 " === Window management
 " ===
 " Use <space> + new arrow keys for moving the cursor around windows
-noremap <LEADER>w <C-w>w
-noremap <LEADER>k <C-w>k
-noremap <LEADER>j <C-w>j
-noremap <LEADER>h <C-w>h
-noremap <LEADER>l <C-w>l
+" noremap <LEADER>w <C-w>w
+" noremap <LEADER>k <C-w>k
+" noremap <LEADER>j <C-w>j
+" noremap <LEADER>h <C-w>h
+" noremap <LEADER>l <C-w>l
+noremap <M-w> <C-w>w
+noremap <M-k> <C-w>k
+noremap <M-j> <C-w>j
+noremap <M-h> <C-w>h
+noremap <M-l> <C-w>l
 
 " Disable the default s key
 noremap s <nop>
@@ -360,10 +369,14 @@ noremap sn :set nosplitright<CR>:vsplit<CR>:set splitright<CR>
 noremap sl :set splitright<CR>:vsplit<CR>
 
 " Use alt + hjkl to resize windows
-nnoremap <silent> <M-j>    :resize -2<CR>
-nnoremap <silent> <M-k>    :resize +2<CR>
-nnoremap <silent> <M-h>    :vertical resize -2<CR>
-nnoremap <silent> <M-l>    :vertical resize +2<CR>
+nnoremap <silent> <M-Up>    :resize -2<CR>
+nnoremap <silent> <M-Down>    :resize +2<CR>
+nnoremap <silent> <M-Left>    :vertical resize -2<CR>
+nnoremap <silent> <M-Right>    :vertical resize +2<CR>
+" nnoremap <silent> <M-j>    :resize -2<CR>
+" nnoremap <silent> <M-k>    :resize +2<CR>
+" nnoremap <silent> <M-h>    :vertical resize -2<CR>
+" nnoremap <silent> <M-l>    :vertical resize +2<CR>
 
 " Place the two screens up and down
 noremap sh <C-w>t<C-w>K
@@ -516,17 +529,20 @@ endfunc
 " ===
 " === Dress up my vim
 " ===
+
 set termguicolors " enable true colors support
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+set background=dark
+colorscheme deus
+" color deus
 
-color deus
-
+let g:deus_termcolors=256
 hi NonText ctermfg=gray guifg=grey10
 
 " ===
 " === eleline.vim
 " ===
-let g:airline_powerline_fonts = 0
+let g:airline_powerline_fonts = 1
 
 " ===================== End of Theme =====================
 
@@ -603,7 +619,7 @@ endif
 
 " fix the most annoying bug that coc has
 "silent! au BufEnter,BufRead,BufNewFile * silent! unmap if
-let g:coc_global_extensions = ['coc-actions', 'coc-python', 'coc-vimlsp', 'coc-snippets', 'coc-html', 'coc-json', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-lists', 'coc-gitignore', 'coc-tailwindcss', 'coc-stylelint', 'coc-tslint', 'coc-emmet', 'coc-git', 'coc-explorer', 'coc-pyright', 'coc-sourcekit', 'coc-translator', 'coc-flutter', 'coc-java']
+let g:coc_global_extensions = ['coc-actions', 'coc-python', 'coc-vimlsp', 'coc-snippets', 'coc-html', 'coc-json', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-lists', 'coc-gitignore', 'coc-tailwindcss', 'coc-stylelint', 'coc-tslint', 'coc-emmet', 'coc-git', 'coc-explorer', 'coc-pyright', 'coc-sourcekit', 'coc-translator', 'coc-flutter-tools', 'coc-java']
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
@@ -642,6 +658,9 @@ endif
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> <leader>- <Plug>(coc-diagnostic-prev)
 nmap <silent> <leader>= <Plug>(coc-diagnostic-next)
+
+" Useful commands
+nnoremap <silent> <space>y :<C-u>CocList -A --normal yank<cr>
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
@@ -879,9 +898,30 @@ let g:rainbow_active = 1
 " ===
 " === rnvimr
 " ===
+" let g:rnvimr_ex_enable = 1
+" let g:rnvimr_pick_enable = 1
+" nnoremap <silent> R :RnvimrSync<CR>:RnvimrToggle<CR><C-\><C-n>:RnvimrResize 0<CR>
+" let g:rnvimr_presets = [{'width': 1.0, 'height': 1.0}]
 let g:rnvimr_ex_enable = 1
 let g:rnvimr_pick_enable = 1
-nnoremap <silent> R :RnvimrSync<CR>:RnvimrToggle<CR><C-\><C-n>:RnvimrResize 0<CR>
+let g:rnvimr_draw_border = 0
+" let g:rnvimr_bw_enable = 1
+let g:rnvimr_vanilla = 1
+highlight link RnvimrNormal CursorLine
+nnoremap <silent> R :RnvimrToggle<CR><C-\><C-n>:RnvimrResize 0<CR>
+let g:rnvimr_action = {
+            \ '<C-t>': 'NvimEdit tabedit',
+            \ '<C-x>': 'NvimEdit split',
+            \ '<C-v>': 'NvimEdit vsplit',
+            \ 'gw': 'JumpNvimCwd',
+            \ 'yw': 'EmitRangerCwd'
+            \ }
+let g:rnvimr_layout = { 'relative': 'editor',
+            \ 'width': &columns,
+            \ 'height': &lines,
+            \ 'col': 0,
+            \ 'row': 0,
+            \ 'style': 'minimal' }
 let g:rnvimr_presets = [{'width': 1.0, 'height': 1.0}]
 
 
@@ -889,27 +929,51 @@ let g:rnvimr_presets = [{'width': 1.0, 'height': 1.0}]
 " === signify
 " ===
 " Change these if you want
-let g:signify_sign_add               = '+'
-let g:signify_sign_delete            = '_'
-let g:signify_sign_delete_first_line = '‾'
-let g:signify_sign_change            = '~'
+" let g:signify_sign_add               = '+'
+" let g:signify_sign_delete            = '_'
+" let g:signify_sign_delete_first_line = '‾'
+" let g:signify_sign_change            = '~'
 
-" I find the numbers disctracting
-let g:signify_sign_show_count = 0
-let g:signify_sign_show_text = 1
-
+" " I find the numbers disctracting
+" let g:signify_sign_show_count = 0
+" let g:signify_sign_show_text = 1
 
 " Jump though hunks
-nmap <leader>gj <plug>(signify-next-hunk)
-nmap <leader>gk <plug>(signify-prev-hunk)
-nmap <leader>gJ 9999<leader>gJ
-nmap <leader>gK 9999<leader>gk
-
+" nmap <leader>gj <plug>(signify-next-hunk)
+" nmap <leader>gk <plug>(signify-prev-hunk)
+" nmap <leader>gJ 9999<leader>gJ
+" nmap <leader>gK 9999<leader>gk
 
 " If you like colors instead
 " highlight SignifySignAdd                  ctermbg=green                guibg=#00ff00
 " highlight SignifySignDelete ctermfg=black ctermbg=red    guifg=#ffffff guibg=#ff0000
 " highlight SignifySignChange ctermfg=black ctermbg=yellow guifg=#000000 guibg=#ffff00
+
+" ==
+" == GitGutter
+" ==
+" let g:gitgutter_signs = 0
+let g:gitgutter_sign_allow_clobber = 0
+let g:gitgutter_map_keys = 0
+let g:gitgutter_override_sign_column_highlight = 0
+let g:gitgutter_preview_win_floating = 1
+let g:gitgutter_sign_added = '▎'
+let g:gitgutter_sign_modified = '░'
+let g:gitgutter_sign_removed = '▏'
+let g:gitgutter_sign_removed_first_line = '▔'
+let g:gitgutter_sign_modified_removed = '▒'
+" autocmd BufWritePost * GitGutter
+nnoremap <LEADER>gf :GitGutterFold<CR>
+nnoremap H :GitGutterPreviewHunk<CR>
+nnoremap <LEADER>g- :GitGutterPrevHunk<CR>
+nnoremap <LEADER>g= :GitGutterNextHunk<CR>
+
+" ===
+" === Agit
+" ===
+nnoremap <LEADER>gl :Agit<CR>
+let g:agit_no_default_mappings = 1
+
 
 " ===
 " === suda.vim
@@ -1146,5 +1210,13 @@ let g:xtabline_settings.icons = {
 			\'lens': '🔍',
 			\'flag': '🏁',
 			\}
+
+" ===
+" === vim-doge
+" ===
+" let g:doge_mapping_comment_jump_forward = '<C-j>'
+" let g:doge_mapping_comment_jump_backward = '<C-k>'
+
+let g:ruby_host_prog = '/usr/bin/ruby'
 
 " ===================== End of Plugin Config =====================

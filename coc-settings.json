@@ -162,11 +162,10 @@
 	"git.enableGlobalStatus": false,
 	"git.signOffset": 2,
 	"tslint.autoFixOnSave": true,
-	"flutter.lsp.initialization.closingLabels":true,
-	"pyright.disableLanguageServices": true,
+	"pyright.disableLanguageServices": false,
 	"python.autoComplete.addBrackets": true,
 	"python.analysis.diagnosticEnabled": false,
-	"python.jediEnabled": true,
+	"python.jediEnabled": false,
 	"python.linting.pylintArgs": ["--extension-pkg-whitelist=cv2", "--errors-only"],
 	"python.formatting.provider": "yapf",
 	"python.formatting.yapfArgs": [
