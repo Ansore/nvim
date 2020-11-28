@@ -10,9 +10,9 @@
 " === Auto load for first time uses
 " ===
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
-	silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 "插件管理部分
@@ -32,8 +32,10 @@ Plug 'RRethy/vim-illuminate'
 "Plug 'kaicataldo/material.vim'
 "Plug 'vim-airline/vim-airline-themes'
 "Plug 'arcticicestudio/nord-vim'
-Plug 'ajmwagar/vim-deus'
-Plug 'theniceboy/eleline.vim'
+" Plug 'ajmwagar/vim-deus'
+Plug 'arzg/vim-colors-xcode'
+Plug 'liuchengxu/eleline.vim'
+" Plug 'theniceboy/eleline.vim'
 Plug 'bling/vim-bufferline'
 
 " Genreal Highlighter
@@ -57,18 +59,18 @@ Plug 'mbbill/undotree'
 
 " Coc Use release branch (Recommend)
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" <leader>d create function document 
+" <leader>d create function document
 " Plug 'kkoomen/vim-doge'
 
 " Git
 Plug 'fszymanski/fzf-gitignore', { 'do': ':UpdateRemotePlugins' }
 
 " Git integration
-" Plug 'mhinz/vim-signify'
+Plug 'mhinz/vim-signify'
 " Plug 'tpope/vim-fugitive'
 " Plug 'tpope/vim-rhubarb'
 " Plug 'junegunn/gv.vim'
-Plug 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter'
 Plug 'cohama/agit.vim'
 
 " HTML, CSS, JavaScript, PHP, JSON, etc.
@@ -154,9 +156,9 @@ call plug#end()
 
 " Automatically install missing plugins on startup
 autocmd VimEnter *
-			\  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-			\|   PlugInstall --sync | q
-			\| endif
+      \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+      \|   PlugInstall --sync | q
+      \| endif
 " ===================== End of Plugin Install =====================
 
 " ===================== Start of Settings =====================
@@ -213,8 +215,8 @@ silent !mkdir -p ~/.config/nvim/tmp/undo
 set backupdir=~/.config/nvim/tmp/backup,.
 set directory=~/.config/nvim/tmp/backup,.
 if has('persistent_undo')
-	set undofile
-	set undodir=~/.config/nvim/tmp/undo,.
+  set undofile
+  set undodir=~/.config/nvim/tmp/undo,.
 endif
 " set colorcolumn=80
 "set updatetime=1000
@@ -244,14 +246,14 @@ exec "nohlsearch"
 " Create a _machine_specific.vim file to adjust machine specific stuff, like python interpreter location
 let has_machine_specific_file = 1
 if empty(glob('~/.config/nvim/_machine_specific.vim'))
-	let has_machine_specific_file = 0
-	silent! exec "!cp ~/.config/nvim/default_configs/_machine_specific_default.vim ~/.config/nvim/_machine_specific.vim"
+  let has_machine_specific_file = 0
+  silent! exec "!cp ~/.config/nvim/default_configs/_machine_specific_default.vim ~/.config/nvim/_machine_specific.vim"
 endif
 source ~/.config/nvim/_machine_specific.vim
 
 " Open the _machine_specific.vim file if it has just been created
 if has_machine_specific_file == 0
-	exec "e ~/.config/nvim/_machine_specific.vim"
+  exec "e ~/.config/nvim/_machine_specific.vim"
 endif
 
 " Turn spellcheck on for markdown files
@@ -440,41 +442,41 @@ noremap \s :%s//g<left><left>
 " Compile function
 noremap r :call CompileRunGcc()<CR>
 func! CompileRunGcc()
-	exec "w"
-	if &filetype == 'c'
-		exec "!gcc % -o %<"
-		exec "!time ./%<"
-	elseif &filetype == 'cpp'
-		set splitbelow
-		"exec \"!g++ -std=c++11 % -Wall -o %<"
-		":sp
-		":res -15
-		":term ./%<
-		exec "!g++ % -o %<"
-		exec "!time ./%<"
-	elseif &filetype == 'java'
-		exec "!javac %"
-		exec "!time java %<"
-	elseif &filetype == 'sh'
-		:!time bash %
-	elseif &filetype == 'python'
-		set splitbelow
-		:sp
-		:term python3 %
-	elseif &filetype == 'html'
-		silent! exec "!".g:mkdp_browser." % &"
-	elseif &filetype == 'markdown'
-		exec "MarkdownPreview"
-	elseif &filetype == 'tex'
-		silent! exec "VimtexStop"
-		silent! exec "VimtexCompile"
-	"elseif &filetype == 'dart'
-		"CocCommand flutter.run
-	elseif &filetype == 'go'
-		set splitbelow
-		:sp
-		:term go run %
-	endif
+  exec "w"
+  if &filetype == 'c'
+    exec "!gcc % -o %<"
+    exec "!time ./%<"
+  elseif &filetype == 'cpp'
+    set splitbelow
+    "exec \"!g++ -std=c++11 % -Wall -o %<"
+    ":sp
+    ":res -15
+    ":term ./%<
+    exec "!g++ % -o %<"
+    exec "!time ./%<"
+  elseif &filetype == 'java'
+    exec "!javac %"
+    exec "!time java %<"
+  elseif &filetype == 'sh'
+    :!time bash %
+  elseif &filetype == 'python'
+    set splitbelow
+    :sp
+    :term python3 %
+  elseif &filetype == 'html'
+    silent! exec "!".g:mkdp_browser." % &"
+  elseif &filetype == 'markdown'
+    exec "MarkdownPreview"
+  elseif &filetype == 'tex'
+    silent! exec "VimtexStop"
+    silent! exec "VimtexCompile"
+    "elseif &filetype == 'dart'
+    "CocCommand flutter.run
+  elseif &filetype == 'go'
+    set splitbelow
+    :sp
+    :term go run %
+  endif
 endfunc
 " ===================== End of Mappings =====================
 
@@ -512,7 +514,7 @@ endfunc
 " let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 " if !exists('g:airline_symbols')
-" 	let g:airline_symbols = {}
+"   let g:airline_symbols = {}
 " endif
 
 " powerline symbols
@@ -530,19 +532,41 @@ endfunc
 " === Dress up my vim
 " ===
 
-set termguicolors " enable true colors support
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-set background=dark
-colorscheme deus
-" color deus
+" --------
+"Credit joshdick
+"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
+"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
+"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
+if (empty($TMUX))
+  if (has("nvim"))
+  "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+  if (has("termguicolors"))
+    set termguicolors
+  endif
+endif
+" set termguicolors " enable true colors support
+" colorscheme xcodedark
+" colorscheme xcodedarkhc
+" colorscheme xcodelight
+colorscheme xcodelighthc
+" colorscheme xcodewwdc
 
-let g:deus_termcolors=256
-hi NonText ctermfg=gray guifg=grey10
+" let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+" set background=dark
+" colorscheme deus
+
+" let g:deus_termcolors=256
+" hi NonText ctermfg=gray guifg=grey10
 
 " ===
 " === eleline.vim
 " ===
-let g:airline_powerline_fonts = 1
+let g:eleline_powerline_fonts = 1
 
 " ===================== End of Theme =====================
 
@@ -631,8 +655,8 @@ inoremap <silent><expr> <TAB>
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
-	let col = col('.') - 1
-	return !col || getline('.')[col - 1]  =~# '\s'
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 
@@ -672,11 +696,11 @@ nmap <silent> gr <Plug>(coc-references)
 nnoremap <silent> <leader>h :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
-	if (index(['vim','help'], &filetype) >= 0)
-		execute 'h '.expand('<cword>')
-	else
-		call CocAction('doHover')
-	endif
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
 endfunction
 
 " Highlight the symbol and its references when holding the cursor.
@@ -690,11 +714,11 @@ nmap <leader>rn <Plug>(coc-rename)
 " nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
-	autocmd!
-	" Setup formatexpr specified filetype(s).
-	autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-	" Update signature help on jump placeholder.
-	autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
 " Applying codeAction to the selected region.
@@ -790,8 +814,8 @@ let g:snippet_author = 'Ansore'
 "" ===
 noremap <LEADER>m :F  **/*<left><left><left><left><left>
 let g:far#mapping = {
-			\ "replace_undo" : ["u"],
-			\ }
+      \ "replace_undo" : ["u"],
+      \ }
 
 " ===
 " === fzf-gitignore
@@ -813,43 +837,43 @@ noremap <C-w> :Buffers<CR>
 
 autocmd! FileType fzf
 autocmd  FileType fzf set laststatus=0 noruler
-			\| autocmd BufLeave <buffer> set laststatus=2 ruler
+      \| autocmd BufLeave <buffer> set laststatus=2 ruler
 
 command! -bang -nargs=* Buffers
-			\ call fzf#vim#buffers(
-			\   '',
-			\   <bang>0 ? fzf#vim#with_preview('up:60%')
-			\           : fzf#vim#with_preview('right:0%', '?'),
-			\   <bang>0)
+      \ call fzf#vim#buffers(
+      \   '',
+      \   <bang>0 ? fzf#vim#with_preview('up:60%')
+      \           : fzf#vim#with_preview('right:0%', '?'),
+      \   <bang>0)
 
 
 command! -bang -nargs=* LinesWithPreview
-			\ call fzf#vim#grep(
-			\   'rg --with-filename --column --line-number --no-heading --color=always --smart-case . '.fnameescape(expand('%')), 1,
-			\   fzf#vim#with_preview({}, 'up:50%', '?'),
-			\   1)
+      \ call fzf#vim#grep(
+      \   'rg --with-filename --column --line-number --no-heading --color=always --smart-case . '.fnameescape(expand('%')), 1,
+      \   fzf#vim#with_preview({}, 'up:50%', '?'),
+      \   1)
 
 command! -bang -nargs=* Ag
-			\ call fzf#vim#ag(
-			\   '',
-			\   <bang>0 ? fzf#vim#with_preview('up:60%')
-			\           : fzf#vim#with_preview('right:50%', '?'),
-			\   <bang>0)
+      \ call fzf#vim#ag(
+      \   '',
+      \   <bang>0 ? fzf#vim#with_preview('up:60%')
+      \           : fzf#vim#with_preview('right:50%', '?'),
+      \   <bang>0)
 
 
 command! -bang -nargs=* MRU call fzf#vim#history(fzf#vim#with_preview())
 
 command! -bang BTags
-			\ call fzf#vim#buffer_tags('', {
-			\     'down': '40%',
-			\     'options': '--with-nth 1
-			\                 --reverse
-			\                 --prompt "> "
-			\                 --preview-window="70%"
-			\                 --preview "
-			\                     tail -n +\$(echo {3} | tr -d \";\\\"\") {2} |
-			\                     head -n 16"'
-			\ })
+      \ call fzf#vim#buffer_tags('', {
+      \     'down': '40%',
+      \     'options': '--with-nth 1
+      \                 --reverse
+      \                 --prompt "> "
+      \                 --preview-window="70%"
+      \                 --preview "
+      \                     tail -n +\$(echo {3} | tr -d \";\\\"\") {2} |
+      \                     head -n 16"'
+      \ })
 
 " ===
 " === MarkdownPreview
@@ -863,14 +887,14 @@ let g:mkdp_open_ip = ''
 let g:mkdp_echo_preview_url = 0
 let g:mkdp_browserfunc = ''
 let g:mkdp_preview_options = {
-			\ 'mkit': {},
-			\ 'katex': {},
-			\ 'uml': {},
-			\ 'maid': {},
-			\ 'disable_sync_scroll': 0,
-			\ 'sync_scroll_type': 'middle',
-			\ 'hide_yaml_meta': 1
-			\ }
+      \ 'mkit': {},
+      \ 'katex': {},
+      \ 'uml': {},
+      \ 'maid': {},
+      \ 'disable_sync_scroll': 0,
+      \ 'sync_scroll_type': 'middle',
+      \ 'hide_yaml_meta': 1
+      \ }
 let g:mkdp_markdown_css = ''
 let g:mkdp_highlight_css = ''
 let g:mkdp_port = ''
@@ -910,18 +934,18 @@ let g:rnvimr_vanilla = 1
 highlight link RnvimrNormal CursorLine
 nnoremap <silent> R :RnvimrToggle<CR><C-\><C-n>:RnvimrResize 0<CR>
 let g:rnvimr_action = {
-            \ '<C-t>': 'NvimEdit tabedit',
-            \ '<C-x>': 'NvimEdit split',
-            \ '<C-v>': 'NvimEdit vsplit',
-            \ 'gw': 'JumpNvimCwd',
-            \ 'yw': 'EmitRangerCwd'
-            \ }
+      \ '<C-t>': 'NvimEdit tabedit',
+      \ '<C-x>': 'NvimEdit split',
+      \ '<C-v>': 'NvimEdit vsplit',
+      \ 'gw': 'JumpNvimCwd',
+      \ 'yw': 'EmitRangerCwd'
+      \ }
 let g:rnvimr_layout = { 'relative': 'editor',
-            \ 'width': &columns,
-            \ 'height': &lines,
-            \ 'col': 0,
-            \ 'row': 0,
-            \ 'style': 'minimal' }
+      \ 'width': &columns,
+      \ 'height': &lines,
+      \ 'col': 0,
+      \ 'row': 0,
+      \ 'style': 'minimal' }
 let g:rnvimr_presets = [{'width': 1.0, 'height': 1.0}]
 
 
@@ -935,12 +959,12 @@ let g:rnvimr_presets = [{'width': 1.0, 'height': 1.0}]
 " let g:signify_sign_change            = '~'
 
 " " I find the numbers disctracting
-" let g:signify_sign_show_count = 0
-" let g:signify_sign_show_text = 1
+let g:signify_sign_show_count = 0
+let g:signify_sign_show_text = 1
 
 " Jump though hunks
-" nmap <leader>gj <plug>(signify-next-hunk)
-" nmap <leader>gk <plug>(signify-prev-hunk)
+nmap <leader>gj <plug>(signify-next-hunk)
+nmap <leader>gk <plug>(signify-prev-hunk)
 " nmap <leader>gJ 9999<leader>gJ
 " nmap <leader>gK 9999<leader>gk
 
@@ -949,24 +973,30 @@ let g:rnvimr_presets = [{'width': 1.0, 'height': 1.0}]
 " highlight SignifySignDelete ctermfg=black ctermbg=red    guifg=#ffffff guibg=#ff0000
 " highlight SignifySignChange ctermfg=black ctermbg=yellow guifg=#000000 guibg=#ffff00
 
+let g:signify_sign_add    = '┃'
+let g:signify_sign_change = '┃'
+let g:signify_sign_delete = '•'
+
+let g:signify_sign_show_count = 0 " Don’t show the number of deleted lines.
+
 " ==
 " == GitGutter
 " ==
 " let g:gitgutter_signs = 0
-let g:gitgutter_sign_allow_clobber = 0
-let g:gitgutter_map_keys = 0
-let g:gitgutter_override_sign_column_highlight = 0
-let g:gitgutter_preview_win_floating = 1
-let g:gitgutter_sign_added = '▎'
-let g:gitgutter_sign_modified = '░'
-let g:gitgutter_sign_removed = '▏'
-let g:gitgutter_sign_removed_first_line = '▔'
-let g:gitgutter_sign_modified_removed = '▒'
-" autocmd BufWritePost * GitGutter
-nnoremap <LEADER>gf :GitGutterFold<CR>
-nnoremap H :GitGutterPreviewHunk<CR>
-nnoremap <LEADER>g- :GitGutterPrevHunk<CR>
-nnoremap <LEADER>g= :GitGutterNextHunk<CR>
+" let g:gitgutter_sign_allow_clobber = 0
+" let g:gitgutter_map_keys = 0
+" let g:gitgutter_override_sign_column_highlight = 0
+" let g:gitgutter_preview_win_floating = 1
+" let g:gitgutter_sign_added = '▎'
+" let g:gitgutter_sign_modified = '░'
+" let g:gitgutter_sign_removed = '▏'
+" let g:gitgutter_sign_removed_first_line = '▔'
+" let g:gitgutter_sign_modified_removed = '▒'
+" " autocmd BufWritePost * GitGutter
+" nnoremap <LEADER>gf :GitGutterFold<CR>
+" nnoremap H :GitGutterPreviewHunk<CR>
+" nnoremap <LEADER>g- :GitGutterPrevHunk<CR>
+" nnoremap <LEADER>g= :GitGutterNextHunk<CR>
 
 " ===
 " === Agit
@@ -992,10 +1022,10 @@ let g:undotree_WindowLayout = 2
 let g:undotree_DiffpanelHeight = 8
 let g:undotree_SplitWidth = 24
 function g:Undotree_CustomMap()
-	nmap <buffer> k <plug>UndotreeNextState
-	nmap <buffer> j <plug>UndotreePreviousState
-	nmap <buffer> K 5<plug>UndotreeNextState
-	nmap <buffer> J 5<plug>UndotreePreviousState
+  nmap <buffer> k <plug>UndotreeNextState
+  nmap <buffer> j <plug>UndotreePreviousState
+  nmap <buffer> K 5<plug>UndotreeNextState
+  nmap <buffer> J 5<plug>UndotreePreviousState
 endfunc
 
 " ===
@@ -1145,14 +1175,14 @@ let g:VM_maps["Toggle Multiline"]     = '\\M'
 " ===
 let g:vimspector_enable_mappings = 'HUMAN'
 function! s:read_template_into_buffer(template)
-	" has to be a function to avoid the extra space fzf#run insers otherwise
-	execute '0r ~/.config/nvim/sample_vimspector_json/'.a:template
+  " has to be a function to avoid the extra space fzf#run insers otherwise
+  execute '0r ~/.config/nvim/sample_vimspector_json/'.a:template
 endfunction
 command! -bang -nargs=* LoadVimSpectorJsonTemplate call fzf#run({
-			\   'source': 'ls -1 ~/.config/nvim/sample_vimspector_json',
-			\   'down': 20,
-			\   'sink': function('<sid>read_template_into_buffer')
-			\ })
+      \   'source': 'ls -1 ~/.config/nvim/sample_vimspector_json',
+      \   'down': 20,
+      \   'sink': function('<sid>read_template_into_buffer')
+      \ })
 noremap <leader>vs :tabe .vimspector.json<CR>:LoadVimSpectorJsonTemplate<CR>
 sign define vimspectorBP text=☛ texthl=Normal
 sign define vimspectorBPDisabled text=☞ texthl=Normal
@@ -1167,11 +1197,11 @@ let g:vista_default_executive = 'ctags'
 let g:vista_fzf_preview = ['right:50%']
 let g:vista#renderer#enable_icon = 1
 let g:vista#renderer#icons = {
-			\   "function": "\uf794",
-			\   "variable": "\uf71b",
-			\  }
+      \   "function": "\uf794",
+      \   "variable": "\uf71b",
+      \  }
 function! NearestMethodOrFunction() abort
-	return get(b:, 'vista_nearest_method_or_function', '')
+  return get(b:, 'vista_nearest_method_or_function', '')
 endfunction
 set statusline+=%{NearestMethodOrFunction()}
 autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
@@ -1188,28 +1218,28 @@ noremap to :XTabCycleMode<CR>
 noremap \p :XTabInfo<CR>
 " powerline fonts
 let g:xtabline_settings.indicators = {
-			\ 'modified': '[+]',
-			\ 'pinned': '[📌]',
-			\}
+      \ 'modified': '[+]',
+      \ 'pinned': '[📌]',
+      \}
 
 let g:xtabline_settings.icons = {
-			\'pin': '📌',
-			\'star': '★',
-			\'book': '📖',
-			\'lock': '🔒',
-			\'hammer': '🔨',
-			\'tick': '✔',
-			\'cross': '✖',
-			\'warning': '⚠',
-			\'menu': '☰',
-			\'apple': '🍎',
-			\'linux': '🐧',
-			\'windows': '⌘',
-			\'git': '',
-			\'palette': '🎨',
-			\'lens': '🔍',
-			\'flag': '🏁',
-			\}
+      \'pin': '📌',
+      \'star': '★',
+      \'book': '📖',
+      \'lock': '🔒',
+      \'hammer': '🔨',
+      \'tick': '✔',
+      \'cross': '✖',
+      \'warning': '⚠',
+      \'menu': '☰',
+      \'apple': '🍎',
+      \'linux': '🐧',
+      \'windows': '⌘',
+      \'git': '',
+      \'palette': '🎨',
+      \'lens': '🔍',
+      \'flag': '🏁',
+      \}
 
 " ===
 " === vim-doge
