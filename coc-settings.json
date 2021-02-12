@@ -4,6 +4,7 @@
   "coc.preferences.snippetStatusText": "Ⓢ ",
   "coc.preferences.extensionUpdateCheck": "daily",
   "java.home": "/home/ansore/.local/java/jdk1.8.0_251",
+  "snippets.userSnippetsDirectory": "~/.config/nvim/snips",
   "suggest.detailMaxLength": 60,
   "suggest.noselect": true,
   "suggest.enablePreselect": false,
@@ -165,19 +166,34 @@
   "git.enableGlobalStatus": false,
   "git.signOffset": 2,
   "tslint.autoFixOnSave": true,
-  "pyright.disableCompletion": true,
-  "python.autoComplete.addBrackets": true,
-  "python.jediEnabled": true,
-  "python.linting.pylintArgs": [
-    "--extension-pkg-whitelist=cv2",
-    "--errors-only"
-  ],
-  "python.formatting.provider": "yapf",
-  "python.formatting.yapfArgs": [
-    "--style",
-    "{SPACES_AROUND_POWER_OPERATOR: True, SPACES_BEFORE_COMMENT: 1}"
-  ],
   "html.format.enable": true,
+  // python config
+  "python.analysis.autoImportCompletions": true,
+  "python.analysis.autoSearchPaths": true,
+  "python.analysis.diagnosticMode": "openFilesOnly",
+  "python.analysis.stubPath": "typings",
+  "python.analysis.typeshedPaths": [],
+  "python.analysis.diagnosticSeverityOverrides": {},
+  "python.analysis.typeCheckingMode": "basic",
+  "python.analysis.useLibraryCodeForTypes": true,
+  "python.pythonPath": "python",
+  "python.venvPath": "",
+  "python.formatting.provider": "black",
+  "python.formatting.blackPath": "black",
+  "python.formatting.blackArgs": [],
+  "python.formatting.autopep8Path": "autopep8",
+  "python.formatting.autopep8Args": [],
+  "python.formatting.yapfPath": "yapf",
+  "python.formatting.yapfArgs": [],
+  "python.linting.enabled": true,
+  "python.linting.flake8Enabled": false,
+  "python.linting.banditEnabled": false,
+  "python.linting.mypyEnabled": false,
+  "python.linting.pytypeEnabled": false,
+  "python.linting.prospectorEnabled": false,
+  "python.linting.pydocstyleEnabled": false,
+  "python.linting.pylamaEnabled": false,
+  "python.linting.pylintEnabled": true,
   "javascript.referencesCodeLens.enable": true,
   "javascript.showUnused": true,
   "javascript.suggest.names": true,
@@ -194,9 +210,7 @@
       "filetypes": ["go"],
       "disableWorkspaceFolders": true,
       "initializationOptions": {
-        "gocodeCompletionEnabled": true,
-        "diagnosticsEnabled": true,
-        "lintTool": "golint"
+        "usePlaceholders": true
       }
     },
     "bash": {

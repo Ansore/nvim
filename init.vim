@@ -15,151 +15,18 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-"插件管理部分
-" Specify a directory for plugins
-" - For Neovim: ~/.local/share/nvim/plugged
-" - Avoid using standard Vim directory names like 'plugin'
-call plug#begin('~/.config/nvim/plugged')
+" Create a _machine_specific.vim file to adjust machine specific stuff, like python interpreter location
+let has_machine_specific_file = 1
+if empty(glob('~/.config/nvim/_machine_specific.vim'))
+  let has_machine_specific_file = 0
+  silent! exec "!cp ~/.config/nvim/default_configs/_machine_specific_default.vim ~/.config/nvim/_machine_specific.vim"
+endif
+source ~/.config/nvim/_machine_specific.vim
 
-Plug 'tiagofumo/dart-vim-flutter-layout'
-
-" Vim plugin for automatically highlighting other uses of the current word under the cursor
-Plug 'RRethy/vim-illuminate'
-
-" Pretty Dress
-" Plug 'vim-airline/vim-airline'
-" Plug 'christianchiarulli/onedark.vim'
-"Plug 'kaicataldo/material.vim'
-"Plug 'vim-airline/vim-airline-themes'
-"Plug 'arcticicestudio/nord-vim'
-" Plug 'ajmwagar/vim-deus'
-Plug 'arzg/vim-colors-xcode'
-Plug 'liuchengxu/eleline.vim'
-" Plug 'theniceboy/eleline.vim'
-Plug 'bling/vim-bufferline'
-
-" Genreal Highlighter
-Plug 'jaxbot/semantic-highlight.vim'
-
-" File navigation
-Plug 'junegunn/fzf.vim'
-Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
-
-" Taglist
-Plug 'liuchengxu/vista.vim'
-
-" Debugger
-Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python'}
-
-" Snippets
-Plug 'honza/vim-snippets'
-
-" Undo Tree
-Plug 'mbbill/undotree'
-
-" Coc Use release branch (Recommend)
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" <leader>d create function document
-" Plug 'kkoomen/vim-doge'
-
-" Git
-Plug 'fszymanski/fzf-gitignore', { 'do': ':UpdateRemotePlugins' }
-
-" Git integration
-Plug 'mhinz/vim-signify'
-" Plug 'tpope/vim-fugitive'
-" Plug 'tpope/vim-rhubarb'
-" Plug 'junegunn/gv.vim'
-" Plug 'airblade/vim-gitgutter'
-Plug 'cohama/agit.vim'
-
-" HTML, CSS, JavaScript, PHP, JSON, etc.
-Plug 'elzr/vim-json'
-Plug 'hail2u/vim-css3-syntax', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
-Plug 'spf13/PIV', { 'for' :['php', 'vim-plug'] }
-Plug 'pangloss/vim-javascript', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
-Plug 'yuezk/vim-js', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
-Plug 'MaxMEllon/vim-jsx-pretty', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
-Plug 'jelera/vim-javascript-syntax', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
-
-" Go
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
-" Python
-Plug 'tweekmonster/braceless.vim'
-
-" Flutter
-Plug 'dart-lang/dart-vim-plugin'
-Plug 'thosakwe/vim-flutter'
-
-" Markdown
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'for' :['markdown', 'vim-plug'] }
-Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle' }
-"Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown'] }
-"Plug 'theniceboy/bullets.vim'
-
-" Other filetypes
-Plug 'jceb/vim-orgmode', {'for': ['vim-plug', 'org']}
-
-" Editor Enhancement
-Plug 'jiangmiao/auto-pairs'
-Plug 'mg979/vim-visual-multi'
-
-Plug 'tpope/vim-commentary' " comment
-Plug 'unblevable/quick-scope' " f key enhance
-
-"Plug 'scrooloose/nerdcommenter' " in <space>cn to comment a line
-
-Plug 'AndrewRadev/switch.vim' " gs to switch
-Plug 'tpope/vim-surround' " type yskw' to wrap the word with '' or type cs'` to change 'word' to `word`
-Plug 'gcmt/wildfire.vim' " in Visual mode, type i' to select all text in '', or type i) i] i} ip
-Plug 'junegunn/vim-easy-align' " gaip= to align the = in paragraph,
-
-"Plug 'easymotion/vim-easymotion'
-" Plug 'junegunn/vim-after-object' " da= to delete what's after =
-
-
-" 折叠
-" Plug 'Konfekt/FastFold'
-Plug 'tmhedberg/SimpylFold'
-
-" Formatter
-Plug 'Chiel92/vim-autoformat'
-
-Plug 'MattesGroeger/vim-bookmarks'
-
-" Find & Replace
-Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'] }
-" 查找时显示数
-Plug 'osyo-manga/vim-anzu'
-
-" Mini vim APP
-Plug 'mhinz/vim-startify'
-
-" Other visual enhancement
-Plug 'ryanoasis/vim-devicons'
-Plug 'luochen1990/rainbow'
-Plug 'mg979/vim-xtabline'
-Plug 'wincent/terminus'
-
-" Other useful utilities
-Plug 'lambdalisue/suda.vim' " do stuff like :sudowrite
-
-" Dependencies
-Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'kana/vim-textobj-user'
-Plug 'roxma/nvim-yarp'
-
-" Initialize plugin system
-call plug#end()
-"插件结束部分
-
-" Automatically install missing plugins on startup
-autocmd VimEnter *
-      \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-      \|   PlugInstall --sync | q
-      \| endif
-" ===================== End of Plugin Install =====================
+" Open the _machine_specific.vim file if it has just been created
+if has_machine_specific_file == 0
+  exec "e ~/.config/nvim/_machine_specific.vim"
+endif
 
 " ===================== Start of Settings =====================
 " ====================
@@ -177,6 +44,8 @@ set autochdir
 " ===
 set number
 set relativenumber
+set lz              " 当运行宏时，在命令执行完成之前，不重绘屏幕
+set whichwrap+=<,>,h,l " 退格键和方向键可以换行
 set cursorline
 set noexpandtab
 set expandtab
@@ -201,7 +70,9 @@ set splitright
 set splitbelow
 set noshowmode
 set showcmd
+"命令模式下，底部操作指令按下 Tab 键自动补全。第一次按下 Tab，会显示所有匹配的操作指令的清单；第二次按下 Tab，会依次选择各个指令。
 set wildmenu
+set wildmode=longest:list,full
 set ignorecase
 set smartcase
 set shortmess+=c
@@ -218,24 +89,23 @@ if has('persistent_undo')
   set undofile
   set undodir=~/.config/nvim/tmp/undo,.
 endif
-" set colorcolumn=80
-"set updatetime=1000
+" set colorcolumn=100
 set virtualedit=block
 "set cmdheight=2
-set updatetime=300
+set updatetime=100
 set encoding=utf8
 
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " n 模式下粘贴系统剪切板的内容
-nmap <Leader>v "+p
+" nmap P "+p
 
 set showmatch " 显示括号匹配
 
-" 开启实时搜索
-set incsearch
-" 搜索时大小写不敏感
-set ignorecase
+set incsearch       " 增量式搜索
+set hlsearch        " 搜索时，高亮显示匹配结果
+set ignorecase    " 搜索时大小写不敏感
+set magic           " 额:h magic，一行很难解释
 syntax enable
 syntax on                    " 开启文件类型侦测
 filetype plugin indent on    " 启用自动补全
@@ -243,25 +113,35 @@ filetype plugin indent on    " 启用自动补全
 " Necessary Commands to Execute : clear search
 exec "nohlsearch"
 
-" Create a _machine_specific.vim file to adjust machine specific stuff, like python interpreter location
-let has_machine_specific_file = 1
-if empty(glob('~/.config/nvim/_machine_specific.vim'))
-  let has_machine_specific_file = 0
-  silent! exec "!cp ~/.config/nvim/default_configs/_machine_specific_default.vim ~/.config/nvim/_machine_specific.vim"
-endif
-source ~/.config/nvim/_machine_specific.vim
-
-" Open the _machine_specific.vim file if it has just been created
-if has_machine_specific_file == 0
-  exec "e ~/.config/nvim/_machine_specific.vim"
-endif
-
 " Turn spellcheck on for markdown files
 augroup auto_spellcheck
   autocmd BufNewFile,BufRead *.md setlocal spell
 augroup END
-" ===================== End of Settings =====================
 
+" ===
+" === Terminal Behaviors
+" ===
+" let g:neoterm_autoscroll = 1
+" autocmd TermOpen term://* startinsert
+" tnoremap <C-N> <C-\><C-N>
+" tnoremap <C-O> <C-\><C-N><C-O>
+" let g:terminal_color_0  = '#000000'
+" let g:terminal_color_1  = '#FF5555'
+" let g:terminal_color_2  = '#50FA7B'
+" let g:terminal_color_3  = '#F1FA8C'
+" let g:terminal_color_4  = '#BD93F9'
+" let g:terminal_color_5  = '#FF79C6'
+" let g:terminal_color_6  = '#8BE9FD'
+" let g:terminal_color_7  = '#BFBFBF'
+" let g:terminal_color_8  = '#4D4D4D'
+" let g:terminal_color_9  = '#FF6E67'
+" let g:terminal_color_10 = '#5AF78E'
+" let g:terminal_color_11 = '#F4F99D'
+" let g:terminal_color_12 = '#CAA9FA'
+" let g:terminal_color_13 = '#FF92D0'
+" let g:terminal_color_14 = '#9AEDFE'
+
+" ===================== End of Settings =====================
 
 " ===================== Start of Mappings =====================
 " ===
@@ -319,10 +199,10 @@ noremap <f12> :tab sp<CR>:term python3 -m pudb %<CR>
 noremap <silent> J 5j
 noremap <silent> K 5k
 
-" N key: go to the start of the line
-noremap <silent> N 0
-" I key: go to the end of the line
-noremap <silent> I ^i
+" H key: go to the start of the line
+noremap <silent> H ^
+" L key: go to the end of the line
+noremap <silent> L $
 
 " Faster in-line navigation
 noremap W 5w
@@ -339,10 +219,10 @@ inoremap <C-a> <ESC>A
 " ===
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
-cnoremap <C-p> <Up>
-cnoremap <C-n> <Down>
-cnoremap <C-b> <Left>
-cnoremap <C-f> <Right>
+cnoremap <C-k> <Up>
+cnoremap <C-j> <Down>
+cnoremap <C-h> <Left>
+cnoremap <C-l> <Right>
 cnoremap <M-b> <S-Left><++>
 cnoremap <M-w> <S-Right>
 
@@ -470,8 +350,8 @@ func! CompileRunGcc()
   elseif &filetype == 'tex'
     silent! exec "VimtexStop"
     silent! exec "VimtexCompile"
-    "elseif &filetype == 'dart'
-    "CocCommand flutter.run
+  elseif &filetype == 'dart'
+    exec "CocCommand flutter.run"
   elseif &filetype == 'go'
     set splitbelow
     :sp
@@ -479,6 +359,157 @@ func! CompileRunGcc()
   endif
 endfunc
 " ===================== End of Mappings =====================
+
+
+"插件管理部分
+" Specify a directory for plugins
+" - For Neovim: ~/.local/share/nvim/plugged
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.config/nvim/plugged')
+
+" Plug 'tiagofumo/dart-vim-flutter-layout'
+
+
+" Pretty Dress
+" Plug 'vim-airline/vim-airline'
+" Plug 'christianchiarulli/onedark.vim'
+"Plug 'kaicataldo/material.vim'
+"Plug 'vim-airline/vim-airline-themes'
+"Plug 'arcticicestudio/nord-vim'
+" Plug 'ajmwagar/vim-deus'
+Plug 'arzg/vim-colors-xcode'
+Plug 'liuchengxu/eleline.vim'
+" Plug 'theniceboy/eleline.vim'
+Plug 'bling/vim-bufferline'
+Plug 'Yggdroot/indentLine'
+
+" Genreal Highlighter
+Plug 'jaxbot/semantic-highlight.vim'
+" Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+" Vim plugin for automatically highlighting other uses of the current word under the cursor
+Plug 'RRethy/vim-illuminate'
+
+" File navigation
+Plug 'junegunn/fzf.vim'
+Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
+
+" Taglist
+Plug 'liuchengxu/vista.vim'
+
+" Debugger
+Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python'}
+
+" Snippets
+Plug 'honza/vim-snippets'
+
+" Undo Tree
+Plug 'mbbill/undotree'
+
+" Coc Use release branch (Recommend)
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" <leader>d create function document
+" Plug 'kkoomen/vim-doge'
+
+" Git
+Plug 'fszymanski/fzf-gitignore', { 'do': ':UpdateRemotePlugins' }
+
+" Git integration
+Plug 'mhinz/vim-signify'
+" Plug 'tpope/vim-fugitive'
+" Plug 'tpope/vim-rhubarb'
+" Plug 'junegunn/gv.vim'
+" Plug 'airblade/vim-gitgutter'
+Plug 'cohama/agit.vim'
+
+" HTML, CSS, JavaScript, PHP, JSON, etc.
+Plug 'elzr/vim-json'
+Plug 'hail2u/vim-css3-syntax', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
+Plug 'spf13/PIV', { 'for' :['php', 'vim-plug'] }
+Plug 'pangloss/vim-javascript', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
+Plug 'yuezk/vim-js', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
+Plug 'MaxMEllon/vim-jsx-pretty', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
+Plug 'jelera/vim-javascript-syntax', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
+
+" Go
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
+" Python
+Plug 'tweekmonster/braceless.vim'
+
+" Flutter
+Plug 'dart-lang/dart-vim-plugin'
+Plug 'f-person/pubspec-assist-nvim', { 'for' : ['pubspec.yaml'] }
+" Plug 'thosakwe/vim-flutter'
+
+" Markdown
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'for' :['markdown', 'vim-plug'] }
+Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle' }
+"Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown'] }
+"Plug 'theniceboy/bullets.vim'
+
+" Other filetypes
+Plug 'jceb/vim-orgmode', {'for': ['vim-plug', 'org']}
+
+" Editor Enhancement
+Plug 'jiangmiao/auto-pairs'
+Plug 'mg979/vim-visual-multi'
+
+Plug 'tpope/vim-commentary' " comment
+Plug 'unblevable/quick-scope' " f key enhance
+
+"Plug 'scrooloose/nerdcommenter' " in <space>cn to comment a line
+
+Plug 'AndrewRadev/switch.vim' " gs to switch
+Plug 'tpope/vim-surround' " type yskw' to wrap the word with '' or type cs'` to change 'word' to `word`
+Plug 'gcmt/wildfire.vim' " in Visual mode, type i' to select all text in '', or type i) i] i} ip
+Plug 'junegunn/vim-easy-align' " gaip= to align the = in paragraph,
+
+"Plug 'easymotion/vim-easymotion'
+" Plug 'junegunn/vim-after-object' " da= to delete what's after =
+
+
+" 折叠
+" Plug 'Konfekt/FastFold'
+Plug 'tmhedberg/SimpylFold'
+
+" Formatter
+Plug 'Chiel92/vim-autoformat'
+
+Plug 'MattesGroeger/vim-bookmarks'
+
+" Find & Replace
+Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'] }
+" 查找时显示数
+Plug 'osyo-manga/vim-anzu'
+
+" Mini vim APP
+Plug 'mhinz/vim-startify'
+
+" Other visual enhancement
+Plug 'ryanoasis/vim-devicons'
+Plug 'luochen1990/rainbow'
+Plug 'mg979/vim-xtabline'
+Plug 'wincent/terminus'
+
+" Other useful utilities
+Plug 'lambdalisue/suda.vim' " do stuff like :sudowrite
+
+" Dependencies
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'kana/vim-textobj-user'
+Plug 'roxma/nvim-yarp'
+
+" Initialize plugin system
+call plug#end()
+"插件结束部分
+
+" Automatically install missing plugins on startup
+autocmd VimEnter *
+      \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+      \|   PlugInstall --sync | q
+      \| endif
+" ===================== End of Plugin Install =====================
+
 
 " ===================== Start of Theme =====================
 
@@ -539,8 +570,8 @@ endfunc
 "(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
 if (empty($TMUX))
   if (has("nvim"))
-  "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+    "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
   endif
   "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
   "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
@@ -643,7 +674,7 @@ endif
 
 " fix the most annoying bug that coc has
 "silent! au BufEnter,BufRead,BufNewFile * silent! unmap if
-let g:coc_global_extensions = ['coc-actions', 'coc-python', 'coc-vimlsp', 'coc-snippets', 'coc-html', 'coc-json', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-lists', 'coc-gitignore', 'coc-tailwindcss', 'coc-stylelint', 'coc-tslint', 'coc-emmet', 'coc-git', 'coc-explorer', 'coc-pyright', 'coc-sourcekit', 'coc-translator', 'coc-flutter-tools', 'coc-java']
+let g:coc_global_extensions = ['coc-actions', 'coc-vimlsp', 'coc-snippets', 'coc-html', 'coc-json', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-lists', 'coc-gitignore', 'coc-tailwindcss', 'coc-stylelint', 'coc-tslint', 'coc-emmet', 'coc-git', 'coc-explorer', 'coc-pyright', 'coc-sourcekit', 'coc-translator', 'coc-flutter-tools', 'coc-java']
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
@@ -710,8 +741,8 @@ endfunction
 nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
-" xmap <leader>f  <Plug>(coc-format-selected)
-" nmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
@@ -723,13 +754,13 @@ augroup end
 
 " Applying codeAction to the selected region.
 " Example: `<leader>aap` for current paragraph
-" xmap <leader>a  <Plug>(coc-codeaction-selected)
-" nmap <leader>a  <Plug>(coc-codeaction-selected)
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
 
 " " Remap keys for applying codeAction to the current buffer.
-" nmap <leader>ac  <Plug>(coc-codeaction)
+nmap <leader>ac  <Plug>(coc-codeaction)
 " " Apply AutoFix to problem on the current line.
-nmap <leader>fx  <Plug>(coc-fix-current)
+nmap <leader>ax  <Plug>(coc-fix-current)
 
 " Remap for do codeAction of selected region
 function! s:cocActionsOpenFromSelected(type) abort
@@ -771,21 +802,21 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Mappings using CoCList:
 " Show all diagnostics.
-nnoremap <silent> <space>l  :<C-u>CocList diagnostics<cr>
-" Manage extensions.
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-" Show commands.
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document.
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols.
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list.
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+" nnoremap <silent> <space>l  :<C-u>CocList diagnostics<cr>
+" " Manage extensions.
+" nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" " Show commands.
+" nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" " Find symbol of current document.
+" nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" " Search workspace symbols.
+" nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" " Do default action for next item.
+" nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" " Do default action for previous item.
+" nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" " Resume latest coc list.
+" nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 " nmap tt :CocCommand explorer<CR>
 nmap e :CocCommand explorer<CR>
@@ -1200,6 +1231,7 @@ let g:vista#renderer#icons = {
       \   "function": "\uf794",
       \   "variable": "\uf71b",
       \  }
+" Show the nearest method/function in the statusline
 function! NearestMethodOrFunction() abort
   return get(b:, 'vista_nearest_method_or_function', '')
 endfunction
@@ -1241,12 +1273,17 @@ let g:xtabline_settings.icons = {
       \'flag': '🏁',
       \}
 
+"----------------------------------------------------
+"                    indentLine
+"----------------------------------------------------
+let g:indentLine_enabled = 1
+let g:indent_guides_guide_size= 1  " 指定对齐线的尺寸
+let g:indent_guides_start_level = 2  " 从第二层开始可视化显示缩进
+
 " ===
 " === vim-doge
 " ===
 " let g:doge_mapping_comment_jump_forward = '<C-j>'
 " let g:doge_mapping_comment_jump_backward = '<C-k>'
-
-let g:ruby_host_prog = '/usr/bin/ruby'
 
 " ===================== End of Plugin Config =====================
