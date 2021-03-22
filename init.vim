@@ -92,7 +92,7 @@ endif
 " set colorcolumn=100
 set virtualedit=block
 "set cmdheight=2
-set updatetime=100
+set updatetime=300
 set encoding=utf8
 
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -213,28 +213,25 @@ noremap B 5b
 " === Insert Mode Cursor Movement
 " ===name
 inoremap <C-a> <ESC>A
+" inoremap <C-k> <Up>
+" inoremap <C-j> <Down>
+" inoremap <C-h> <Left>
+" inoremap <C-l> <Right>
+" inoremap jj <ESC>
+
 
 " ===
 " === Command Mode Cursor Movement
 " ===
-cnoremap <C-a> <Home>
-cnoremap <C-e> <End>
-cnoremap <C-k> <Up>
-cnoremap <C-j> <Down>
-cnoremap <C-h> <Left>
-cnoremap <C-l> <Right>
-cnoremap <M-b> <S-Left><++>
-cnoremap <M-w> <S-Right>
+" cnoremap <C-a> <Home>
+" cnoremap <C-e> <End>
+" cnoremap <M-b> <S-Left><++>
+" cnoremap <M-w> <S-Right>
 
 " ===
 " === Window management
 " ===
-" Use <space> + new arrow keys for moving the cursor around windows
-" noremap <LEADER>w <C-w>w
-" noremap <LEADER>k <C-w>k
-" noremap <LEADER>j <C-w>j
-" noremap <LEADER>h <C-w>h
-" noremap <LEADER>l <C-w>l
+" Use <shift> + new arrow keys for moving the cursor around windows
 noremap <M-w> <C-w>w
 noremap <M-k> <C-w>k
 noremap <M-j> <C-w>j
@@ -367,19 +364,12 @@ endfunc
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.config/nvim/plugged')
 
-" Plug 'tiagofumo/dart-vim-flutter-layout'
-
-
 " Pretty Dress
 " Plug 'vim-airline/vim-airline'
-" Plug 'christianchiarulli/onedark.vim'
-"Plug 'kaicataldo/material.vim'
-"Plug 'vim-airline/vim-airline-themes'
-"Plug 'arcticicestudio/nord-vim'
-" Plug 'ajmwagar/vim-deus'
-Plug 'arzg/vim-colors-xcode'
+Plug 'ajmwagar/vim-deus'
+
+" Plug 'arzg/vim-colors-xcode'
 Plug 'liuchengxu/eleline.vim'
-" Plug 'theniceboy/eleline.vim'
 Plug 'bling/vim-bufferline'
 Plug 'Yggdroot/indentLine'
 
@@ -470,7 +460,7 @@ Plug 'junegunn/vim-easy-align' " gaip= to align the = in paragraph,
 
 " 折叠
 " Plug 'Konfekt/FastFold'
-Plug 'tmhedberg/SimpylFold'
+" Plug 'tmhedberg/SimpylFold'
 
 " Formatter
 Plug 'Chiel92/vim-autoformat'
@@ -490,6 +480,9 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'luochen1990/rainbow'
 Plug 'mg979/vim-xtabline'
 Plug 'wincent/terminus'
+
+" fcitx5
+Plug '520Matches/fcitx5.vim'
 
 " Other useful utilities
 Plug 'lambdalisue/suda.vim' " do stuff like :sudowrite
@@ -584,15 +577,17 @@ endif
 " colorscheme xcodedark
 " colorscheme xcodedarkhc
 " colorscheme xcodelight
-colorscheme xcodelighthc
+" colorscheme xcodelighthc
 " colorscheme xcodewwdc
+" hi MatchParen guifg=#156adf guibg=#ffffff gui=NONE cterm=NONE
+" hi MatchParen guifg=#e62644 guibg=#e2e2ec gui=NONE cterm=NONE
 
 " let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-" set background=dark
-" colorscheme deus
+set background=dark
+colorscheme deus
 
-" let g:deus_termcolors=256
-" hi NonText ctermfg=gray guifg=grey10
+let g:deus_termcolors=256
+hi NonText ctermfg=gray guifg=grey10
 
 " ===
 " === eleline.vim
@@ -719,7 +714,7 @@ nnoremap <silent> <space>y :<C-u>CocList -A --normal yank<cr>
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gt <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
@@ -736,6 +731,8 @@ endfunction
 
 " Highlight the symbol and its references when holding the cursor.
 " autocmd CursorHold * silent call CocActionAsync('highlight')
+au CursorHold * sil call CocActionAsync('highlight')
+au CursorHoldI * sil call CocActionAsync('showSignatureHelp')
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
