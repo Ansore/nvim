@@ -1,5 +1,4 @@
 {
-  "coc.preferences.hoverTarget": "preview",
   "coc.preferences.enableFloatHighlight": true,
   "coc.preferences.snippetStatusText": "Ⓢ ",
   "coc.preferences.extensionUpdateCheck": "daily",
@@ -218,6 +217,20 @@
       "args": ["start"],
       "filetypes": ["sh"],
       "ignoredRootPaths": []
+    },
+    "ccls": {
+      "command": "ccls",
+      "trace.server": "verbose",
+      "filetypes": ["c", "cpp", "cuda", "objc", "objcpp"],
+      "rootPatterns": [".ccls", ".ccls-root", "compile_commands.json"],
+      "initializationOptions": {
+        "cache": {
+          "directory": "/tmp/ccls"
+        },
+        "client": {
+          "snippetSupport": true
+        }
+      }
     }
   }
 }
