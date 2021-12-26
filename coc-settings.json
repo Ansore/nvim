@@ -49,7 +49,6 @@
   "diagnostic.hintSign": "ஐ",
   "diagnostic.displayByAle": false,
   "diagnostic.refreshOnInsertMode": false,
-  "diagnostic.refreshAfterSave": false,
   "diagnostic.checkCurrentLine": true,
   "diagnostic.virtualTextPrefix": " ❯❯❯ ",
   "diagnostic.virtualText": true,
@@ -62,10 +61,7 @@
     "css",
     "dart",
     "python",
-    "json",
-    "vue",
-    "javascript",
-    "typescript"
+    "json"
   ],
   "signature.target": "float",
   "yank.enableCompletion": false,
@@ -164,10 +160,8 @@
   "git.topRemovedSign.text": "▔",
   "git.changeRemovedSign.text": "▒",
   "git.enableGlobalStatus": false,
-  "git.signOffset": 2,
   "tslint.autoFixOnSave": true,
   "html.format.enable": true,
-  // python config
   "python.analysis.autoImportCompletions": true,
   "python.analysis.autoSearchPaths": true,
   "python.analysis.diagnosticMode": "openFilesOnly",
@@ -219,25 +213,10 @@
       "filetypes": ["sh"],
       "ignoredRootPaths": []
     },
-    "ccls": {
-      "command": "ccls",
-      "filetypes": ["c", "cpp", "cuda", "objc", "objcpp"],
-      "rootPatterns": [
-        ".ccls",
-        ".ccls-root",
-        "compile_commands.json",
-        ".git/",
-        ".hg/"
-      ],
-      "initializationOptions": {
-        "cache": {
-          "directory": "/tmp/ccls"
-        },
-        "client": {
-          "snippetSupport": true
-        },
-        "highlight": { "lsRanges": true }
-      }
+    "rust": {
+      "command": "rust-analyzer",
+      "filetypes": ["rust"],
+      "rootPatterns": ["Cargo.toml"]
     }
   }
 }
