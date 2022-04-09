@@ -49,9 +49,9 @@ set whichwrap+=<,>,h,l " 退格键和方向键可以换行
 set cursorline
 set noexpandtab
 set expandtab
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set autoindent
 set list
 set listchars=tab:\|\ ,trail:▫
@@ -400,9 +400,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " <leader>d create function document
 " Plug 'kkoomen/vim-doge'
 
-" Git
-Plug 'fszymanski/fzf-gitignore', { 'do': ':UpdateRemotePlugins' }
-
 " Git integration
 Plug 'mhinz/vim-signify'
 " Plug 'tpope/vim-fugitive'
@@ -468,7 +465,7 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'MattesGroeger/vim-bookmarks'
 
 " Find & Replace
-Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'] }
+Plug 'brooth/far.vim'
 " 查找时显示数
 Plug 'osyo-manga/vim-anzu'
 
@@ -737,7 +734,6 @@ endfunction
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
-autocmd CursorHold * silent call CocActionAsync('showSignatureHelp')
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
@@ -852,11 +848,6 @@ let g:far#mapping = {
       \ }
 
 " ===
-" === fzf-gitignore
-" ===
-noremap <LEADER>gi :FzfGitignore<CR>
-
-" ===
 " === FZF
 " ===
 set rtp+=/usr/local/opt/fzf
@@ -879,7 +870,6 @@ command! -bang -nargs=* Buffers
       \   <bang>0 ? fzf#vim#with_preview('up:60%')
       \           : fzf#vim#with_preview('right:0%', '?'),
       \   <bang>0)
-
 
 command! -bang -nargs=* LinesWithPreview
       \ call fzf#vim#grep(
@@ -1290,3 +1280,5 @@ let g:indent_guides_start_level = 2  " 从第二层开始可视化显示缩进
 " let g:doge_mapping_comment_jump_backward = '<C-k>'
 
 " ===================== End of Plugin Config =====================
+
+" set runtimepath^=/home/ansore/study/coc/hello-world-coc
